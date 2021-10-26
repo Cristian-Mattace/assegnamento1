@@ -10,5 +10,6 @@ public class Main {
         System.out.println(cc.getName());
         System.out.println(uu.getId());
         System.out.println(uu.getId());
+        System.out.println(uu.getId());
     }
 }
