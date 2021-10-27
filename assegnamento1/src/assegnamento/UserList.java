@@ -40,6 +40,7 @@ public class UserList {
 
         for(User u : this.users){
             if(Objects.equals(u.getEmail(), mail) && Objects.equals(u.getPassword(), psw)){
+                System.out.println("Ciao, "+u.getFirstName());
                 return u.getId();
             }
         }
