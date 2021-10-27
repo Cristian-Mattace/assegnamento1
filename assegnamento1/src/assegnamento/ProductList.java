@@ -1,5 +1,4 @@
 package assegnamento;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +50,7 @@ public class ProductList {
         return p;
     }
 
-    public Product getProductMinPrice(){
+    public assegnamento.Product getProductMinPrice(){
         Product p = productList.get(0);
         for (Product product : productList) {
             if (product.getPrice() < p.getPrice()) {

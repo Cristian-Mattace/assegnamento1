@@ -10,6 +10,7 @@ public class Main {
         Product qua = new Product("egb",4,"fino", (float) 12.90);
         Product qui = new Product("qweafd",5,"sino", (float) 12.90);
 
+        userList ul = new userList();
         ProductList pp = new ProductList();
         pp.addProductList(cc);
         pp.addProductList(sec);
