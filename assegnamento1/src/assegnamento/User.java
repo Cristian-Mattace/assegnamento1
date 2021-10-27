@@ -31,7 +31,6 @@ public class User implements Serializable
     this.email     = "";
     this.password = "";
     this.employee = false;
-
   }
 
   /**

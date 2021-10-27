@@ -15,22 +15,22 @@ public class ProductList {
     }
 
     public void removeProduct(Product p){
-        productList.remove(p);
+        this.productList.remove(p);
     }
 
     public List<Product> getProductList(){
-        return productList;
+        return this.productList;
     }
 
     public int getNumberOfElements(){
-        return productList.size();
+        return this.productList.size();
     }
 
     public List<Product> getProductByNameProduct(String n){
 
         ArrayList<Product> p = new ArrayList<>();
 
-        for (Product product : productList) {
+        for (Product product : this.productList) {
             if (product.getName() == n) {
                 p.add(product);
             }
@@ -42,7 +42,7 @@ public class ProductList {
 
         ArrayList<Product> p = new ArrayList<>();
 
-        for (Product product : productList) {
+        for (Product product : this.productList) {
             if (product.getNameproductor() == n) {
                 p.add(product);
             }
@@ -50,9 +50,9 @@ public class ProductList {
         return p;
     }
 
-    public assegnamento.Product getProductMinPrice(){
-        Product p = productList.get(0);
-        for (Product product : productList) {
+    public Product getProductMinPrice(){
+        Product p = this.productList.get(0);
+        for (Product product : this.productList) {
             if (product.getPrice() < p.getPrice()) {
                 p = product;
             }
@@ -61,12 +61,18 @@ public class ProductList {
     }
 
     public Product getProductMaxPrice(){
-        Product p = productList.get(0);
-        for (Product product : productList) {
+        Product p = this.productList.get(0);
+        for (Product product : this.productList) {
             if (product.getPrice() > p.getPrice()) {
                 p = product;
             }
         }
         return p;
+    }
+
+    public void stamp(){
+        for(Product p : this.productList){
+            System.out.println(p.getName());
+        }
     }
 }
