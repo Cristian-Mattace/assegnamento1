@@ -48,4 +48,16 @@ public class Product {
         return this.quantity;
     }
 
+    public boolean acquisto(int q){
+        if(q > this.quantity){
+            System.out.println("There aren't enough products !!!");
+            return false;
+        }
+        else{
+            this.quantity = this.quantity - q;
+            System.out.println("Purchase made, new quantity : " + this.quantity);
+            return true;
+        }
+    }
+
 }
