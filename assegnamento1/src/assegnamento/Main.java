@@ -15,6 +15,7 @@ public class Main {
         ProductList pp = new ProductList();
 
         pp.addProductList(pri);
+
         pp.addProductList(sec);
         pp.addProductList(ter);
         pp.addProductList(qua);

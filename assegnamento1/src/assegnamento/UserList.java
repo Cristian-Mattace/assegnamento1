@@ -47,9 +47,13 @@ public class UserList {
     }
 
     public void stamp(){
-        for(User u : this.users){
-            System.out.println(u.getFirstName());
+        for(User u:this.users){
+            System.out.println(u.getEmail()+" "+u.getPassword());
         }
+    }
+
+    public void listSize(){
+        System.out.println(this.users.size());
     }
 
 }
