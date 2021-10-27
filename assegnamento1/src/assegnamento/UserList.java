@@ -20,7 +20,8 @@ public class UserList {
         if(this.users.size() > 0) {
             for (User us : this.users) {
                 if (us.getEmail() == u.getEmail()) {
-                    System.out.print("Already exist account with the mail: " + u.getEmail());
+                    System.out.println("Already exist account with the mail: " + u.getEmail());
+                    break;
                 } else {
                     this.users.add(u);
                     break;
