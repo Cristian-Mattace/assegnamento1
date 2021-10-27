@@ -9,6 +9,7 @@ public class Main {
 
         System.out.println(cc.getName());
         System.out.print("S");
+        System.out.println("UE");
         System.out.println(uu.getId());
         System.out.println(uu.getId());
     }
