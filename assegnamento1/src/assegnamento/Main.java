@@ -15,7 +15,6 @@ public class Main {
         ProductList pp = new ProductList();
 
         pp.addProductList(pri);
-
         pp.addProductList(sec);
         pp.addProductList(ter);
         pp.addProductList(qua);
@@ -25,10 +24,10 @@ public class Main {
 
         //////////////////////////////////////////////////7
 
-        User uu1 = new User(0,"Utente1","c","x","cccc",false);
-        User uu2 = new User(0,"Utente2","c","y","cccc",false);
-        User uu3 = new User(0,"Utente3","c","z","cccc",false);
-        User uu4 = new User(0,"Utente4","c","x","cccc",false);
+        User uu1 = new User(1,"Utente1","c","x","cccc",false);
+        User uu2 = new User(2,"Utente2","c","y","cccc",false);
+        User uu3 = new User(3,"Utente3","c","z","cccc",false);
+        User uu4 = new User(4,"Utente4","c","x","cccc",false);
 
         UserList us = new UserList();
 
@@ -38,5 +37,8 @@ public class Main {
         us.addUser(uu4);
 
         us.stamp();
+
+        Menu mn = new Menu(us);
+        mn.FirstPage();
     }
 }

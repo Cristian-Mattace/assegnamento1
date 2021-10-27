@@ -1,6 +1,7 @@
 package assegnamento;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class UserList {
 
@@ -38,7 +39,7 @@ public class UserList {
     public int accessSystem(String mail, String psw){
 
         for(User u : this.users){
-            if(u.getEmail()==mail  && u.getPassword()==psw){
+            if(Objects.equals(u.getEmail(), mail) && Objects.equals(u.getPassword(), psw)){
                 return u.getId();
             }
         }
