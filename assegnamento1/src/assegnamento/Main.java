@@ -8,6 +8,8 @@ public class Main {
         User uu = new User(0,"cc","c","x","cccc",false);
 
         System.out.println(cc.getName());
+        System.out.print("S");
+        System.out.println("U");
         System.out.println(uu.getId());
         System.out.println(uu.getId());
         System.out.println(uu.getId());
