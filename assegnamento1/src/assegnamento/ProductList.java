@@ -1,6 +1,7 @@
 package assegnamento;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ProductList {
 
@@ -31,7 +32,7 @@ public class ProductList {
         ArrayList<Product> p = new ArrayList<>();
 
         for (Product product : this.productList) {
-            if (product.getName() == n) {
+            if (Objects.equals(product.getName(), n)) {
                 p.add(product);
             }
         }
@@ -43,7 +44,7 @@ public class ProductList {
         ArrayList<Product> p = new ArrayList<>();
 
         for (Product product : this.productList) {
-            if (product.getNameproductor() == n) {
+            if (Objects.equals(product.getNameproductor(), n)) {
                 p.add(product);
             }
         }

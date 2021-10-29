@@ -148,24 +148,41 @@ public class Menu {
     }
 
 
-    public void SearchProductPage(){
+    public void SearchProductPage() throws IOException {
 
         Product p = new Product();
         do{
             scelta = SearchProductMenu();
             switch (scelta){
 
-                case 1: break;
-                case 2: break;
+                case 1:
+                    System.out.println("Inserisci il nome prodotto da cercare: ");
+                    String s1 = this.br.readLine();
+                    for(Product pp : this.PL.getProductByNameProduct(s1)){
+                        System.out.println(pp.getCode()+" "+pp.getName()+" "+pp.getNameproductor()+" €"+pp.getPrice());
+                    }
+                    break;
+
+                case 2:
+                    System.out.println("Inserisci il nome produttore da cercare: ");
+                    String s2 = this.br.readLine();
+                    for(Product pp : this.PL.getProductByNameProductor(s2)){
+                        System.out.println(pp.getCode()+" "+pp.getName()+" "+pp.getNameproductor()+" €"+pp.getPrice());
+                    }
+                    break;
+
                 case 3:
                     p = this.PL.getProductMinPrice();
                     System.out.println(p.getCode()+" "+p.getName()+" "+p.getNameproductor()+" €"+p.getPrice());
                     break;
+
                 case 4:
                     p = this.PL.getProductMaxPrice();
                     System.out.println(p.getCode()+" "+p.getName()+" "+p.getNameproductor()+" €"+p.getPrice());
                     break;
+
                 case 0: break;
+
                 default:
                     System.out.println("Scelta non corretta, riprova!");
                     break;
