@@ -47,12 +47,12 @@ public class Menu {
             scelta=FirstMenu();
             switch (scelta){
                 case 1: try {
-                    System.out.println("Inserisci Email: ");
+                    System.out.println("Insert Email: ");
                     String mail = this.br.readLine();
 
                     this.UL.stamp();
 
-                    System.out.println("Inserisci Password: ");
+                    System.out.println("Insert Password: ");
                     String psw=this.br.readLine();
                     System.out.println(this.UL.accessSystem(mail, psw));
                     SecondPage();
@@ -63,16 +63,16 @@ public class Menu {
 
                     break;
                 case 2: try {
-                    System.out.println("Inserisci nome: ");
+                    System.out.println("Insert nome: ");
                     String nome = this.br.readLine();
 
-                    System.out.println("Inserisci cognome: ");
+                    System.out.println("Insert cognome: ");
                     String cognome=this.br.readLine();
 
-                    System.out.println("Inserisci email: ");
+                    System.out.println("Insert email: ");
                     String email = this.br.readLine();
 
-                    System.out.println("Inserisci password: ");
+                    System.out.println("Insert password: ");
                     String psw=this.br.readLine();
 
                     checkNewAccount(nome, cognome, email, psw);
@@ -86,7 +86,7 @@ public class Menu {
                 case 0: break;
 
                 default:
-                    System.out.println("Scelta non corretta, riprova!");
+                    System.out.println("Incorrect choise, try again!");
                     break;
             }
         }while (scelta != 0);
@@ -96,8 +96,8 @@ public class Menu {
     public int SecondMenu(){
         int sc=0;
         try {
-            System.out.println("1. Cerca prodotti");
-            System.out.println("2. Acquista prodotti");
+            System.out.println("1. Search product");
+            System.out.println("2. Buy products");
             System.out.println("0. Exit");
             String s = this.br.readLine();
             sc = Integer.parseInt(s);
@@ -122,7 +122,7 @@ public class Menu {
                 case 2: break;
                 case 0: break;
                 default:
-                    System.out.println("Scelta non corretta, riprova!");
+                    System.out.println("Incorrect choise, try again!");
                     break;
             }
         }while (scelta != 0);
@@ -133,11 +133,11 @@ public class Menu {
 
         int sc = 0;
         try {
-            System.out.println("Cerca prodotti per: ");
-            System.out.println("1. Nome prodotto");
-            System.out.println("2. Nome produttore");
-            System.out.println("3. Prezzo minimo");
-            System.out.println("4. Prezzo massimo");
+            System.out.println("Search product by: ");
+            System.out.println("1. Product name");
+            System.out.println("2. Productor name");
+            System.out.println("3. Min price");
+            System.out.println("4. Max price");
             String s = this.br.readLine();
             sc = Integer.parseInt(s);
             return sc;
@@ -156,7 +156,7 @@ public class Menu {
             switch (scelta){
 
                 case 1:
-                    System.out.println("Inserisci il nome prodotto da cercare: ");
+                    System.out.println("Enter the product name to search: ");
                     String s1 = this.br.readLine();
                     for(Product pp : this.PL.getProductByNameProduct(s1)){
                         System.out.println(pp.getCode()+" "+pp.getName()+" "+pp.getNameproductor()+" €"+pp.getPrice());
@@ -164,7 +164,7 @@ public class Menu {
                     break;
 
                 case 2:
-                    System.out.println("Inserisci il nome produttore da cercare: ");
+                    System.out.println("Enter the productor name to search: ");
                     String s2 = this.br.readLine();
                     for(Product pp : this.PL.getProductByNameProductor(s2)){
                         System.out.println(pp.getCode()+" "+pp.getName()+" "+pp.getNameproductor()+" €"+pp.getPrice());
@@ -184,7 +184,7 @@ public class Menu {
                 case 0: break;
 
                 default:
-                    System.out.println("Scelta non corretta, riprova!");
+                    System.out.println("Incorrect choise, try again!");
                     break;
             }
         }while (scelta != 0);
