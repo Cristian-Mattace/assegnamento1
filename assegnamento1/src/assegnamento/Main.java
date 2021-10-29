@@ -8,7 +8,7 @@ public class Main {
 	// write your code here
         Product pri = new Product("Prodotto1",1,"rino", (float) 12.90, 2);
         Product sec = new Product("Prodotto2",2,"pino", (float) 12.90, 4);
-        Product ter = new Product("Prodotto3",3,"gino", (float) 1, 5);
+        Product ter = new Product("Prodotto3",3,"gino", (float) 1.00, 5);
         Product qua = new Product("Prodotto4",4,"fino", (float) 12.90, 1);
         Product qui = new Product("Prodotto5",5,"sino", (float) 12.90, 1);
 
@@ -20,14 +20,14 @@ public class Main {
         pp.addProductList(qua);
         pp.addProductList(qui);
 
-        pp.stamp();
+        //pp.stamp();
 
-        //////////////////////////////////////////////////7
+        //////////////////////////////////////////////////
 
         User uu1 = new User(1,"Utente1","c","x","cccc",false);
         User uu2 = new User(2,"Utente2","c","y","cccc",false);
         User uu3 = new User(3,"Utente3","c","z","cccc",false);
-        User uu4 = new User(4,"Utente4","c","x","cccc",false);
+        User uu4 = new User(4,"Utente4","c","xx","cccc",false);
 
         UserList us = new UserList();
 
@@ -36,9 +36,9 @@ public class Main {
         us.addUser(uu3);
         us.addUser(uu4);
 
-        us.stamp();
+        //us.stamp();
 
-        Menu mn = new Menu(us);
+        Menu mn = new Menu(us, pp);
         mn.FirstPage();
     }
 }
