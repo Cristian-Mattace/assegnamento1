@@ -25,7 +25,7 @@ public class Menu {
         this.br = new BufferedReader(this.isr);
     }
 
-    public int FirstMenu(){
+    public int firstMenu(){
         int sc=0;
         try {
             System.out.println("1. Login");
@@ -41,10 +41,10 @@ public class Menu {
         }
     }
 
-    public void FirstPage(){
+    public void firstPage(){
 
         do{
-            scelta=FirstMenu();
+            scelta=firstMenu();
             switch (scelta){
                 case 1: try {
                     System.out.println("Insert Email: ");
@@ -55,7 +55,7 @@ public class Menu {
                     System.out.println("Insert Password: ");
                     String psw=this.br.readLine();
                     System.out.println(this.UL.accessSystem(mail, psw));
-                    SecondPage();
+                    secondPage();
 
                 }catch(IOException ex){
                     ex.printStackTrace();
@@ -93,7 +93,7 @@ public class Menu {
     }
 
 
-    public int SecondMenu(){
+    public int secondMenu(){
         int sc=0;
         try {
             System.out.println("1. Search product");
@@ -109,17 +109,19 @@ public class Menu {
     }
 
 
-    public void SecondPage() throws IOException {
+    public void secondPage() throws IOException {
 
         do{
-            scelta = SecondMenu();
+            scelta = secondMenu();
             switch (scelta){
 
                 case 1:
-                    SearchProductPage();
+                    searchProductPage();
                     break;
 
-                case 2: break;
+                case 2:
+                    productPurchase();
+                    break;
                 case 0: break;
                 default:
                     System.out.println("Incorrect choise, try again!");
@@ -129,7 +131,7 @@ public class Menu {
     }
 
 
-    public int SearchProductMenu() {
+    public int searchProductMenu() {
 
         int sc = 0;
         try {
@@ -148,11 +150,11 @@ public class Menu {
     }
 
 
-    public void SearchProductPage() throws IOException {
+    public void searchProductPage() throws IOException {
 
         Product p = new Product();
         do{
-            scelta = SearchProductMenu();
+            scelta = searchProductMenu();
             switch (scelta){
 
                 case 1:
@@ -191,10 +193,35 @@ public class Menu {
     }
 
 
+    public void productPurchase() throws IOException {
+        System.out.println("Enter the name product to buy: ");
+        String name = this.br.readLine();
+        System.out.println("Enter the quantity: ");
+        String quantity = this.br.readLine();
+        int q = Integer.parseInt(quantity);
+
+        if(Objects.equals(name, "") && Objects.equals(q, "")){
+            System.out.println("Enter all fields!");
+        }
+        else{
+            Product p = this.PL.getProductByNameProduct(name).get(0);
+            if(p.getQuantity() < q) {
+                System.out.println("Quantity too big!");
+            }
+            else{
+                p.acquisto(q);
+                System.out.println("Great purchase!");
+                this.PL.stamp();
+            }
+        }
+
+    }
+
+
     public boolean checkNewAccount(String n, String c, String e, String p){
 
         if(Objects.equals(n, "") && Objects.equals(c, "") && Objects.equals(e, "") && Objects.equals(p, "")){
-            System.out.println("Inserisci tutti i campi!");
+            System.out.println("Enter all fields!");
             return false;
         }
 

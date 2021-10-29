@@ -39,6 +39,6 @@ public class Main {
         //us.stamp();
 
         Menu mn = new Menu(us, pp);
-        mn.FirstPage();
+        mn.firstPage();
     }
 }
