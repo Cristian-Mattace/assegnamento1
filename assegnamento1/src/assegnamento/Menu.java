@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 
 public class Menu {
-    private int scelta;
+    private String scelta;
     private UserList UL;
     private ProductList PL;
     private int ids;
@@ -16,7 +16,7 @@ public class Menu {
     private BufferedReader br;
 
     public Menu(UserList userl, ProductList productl){
-        this.scelta=0;
+        this.scelta="";
         this.UL = userl;
         this.PL = productl;
         this.ids=0;
@@ -24,18 +24,16 @@ public class Menu {
         this.br = new BufferedReader(this.isr);
     }
 
-    public int firstMenu(){
-        int sc=0;
+    public String firstMenu(){
         try {
             System.out.println("1. Login");
             System.out.println("2. Create new account");
             System.out.println("0. Exit");
-            String s = this.br.readLine();
-            sc = Integer.parseInt(s);
+            String sc = this.br.readLine();
             return sc;
         }catch(IOException e){
             e.printStackTrace();
-            return 0;
+            return null;
         }
     }
 
@@ -44,7 +42,7 @@ public class Menu {
         do{
             scelta=firstMenu();
             switch (scelta){
-                case 1: try {
+                case "1": try {
                     System.out.println("Insert Email: ");
                     String mail = this.br.readLine();
 
@@ -60,16 +58,16 @@ public class Menu {
 
                     break;
 
-                case 2: checkNewAccount(false);
+                case "2": checkNewAccount(false);
                     break;
 
-                case 0: break;
+                case "0": break;
 
                 default:
                     System.out.println("Incorrect choise, try again!");
                     break;
             }
-        }while (scelta != 0);
+        }while (scelta != "0");
     }
 
     public void checkUser(int ids) throws IOException {
@@ -93,18 +91,16 @@ public class Menu {
         }
     }
 
-    public int secondMenuEmployee(){
-        int sc=0;
+    public String secondMenuEmployee(){
         try {
             System.out.println("1. List product");
             System.out.println("2. Add quantity");
             System.out.println("0. Exit");
-            String s = this.br.readLine();
-            sc = Integer.parseInt(s);
+            String sc = this.br.readLine();
             return sc;
         }catch(IOException e){
             e.printStackTrace();
-            return 0;
+            return null;
         }
     }
 
@@ -114,33 +110,31 @@ public class Menu {
             scelta = secondMenuEmployee();
             switch (scelta){
 
-                case 1:
+                case "1":
                     this.PL.stamp();
                     break;
 
-                case 2:
+                case "2":
                     addQuantityToProduct();
                     break;
-                case 0: break;
+                case "0": break;
                 default:
                     System.out.println("Incorrect choise, try again!");
                     break;
             }
-        }while (scelta != 0);
+        }while (scelta != "0");
     }
 
-    public int secondMenuClient(){
-        int sc=0;
+    public String secondMenuClient(){
         try {
             System.out.println("1. Search product");
             System.out.println("2. Buy products");
             System.out.println("0. Exit");
-            String s = this.br.readLine();
-            sc = Integer.parseInt(s);
+            String sc = this.br.readLine();
             return sc;
         }catch(IOException e){
             e.printStackTrace();
-            return 0;
+            return null;
         }
     }
 
@@ -151,37 +145,35 @@ public class Menu {
             scelta = secondMenuClient();
             switch (scelta){
 
-                case 1:
+                case "1":
                     searchProductPage();
                     break;
 
-                case 2:
+                case "2":
                     productPurchase();
                     break;
-                case 0: break;
+                case "0": break;
                 default:
                     System.out.println("Incorrect choise, try again!");
                     break;
             }
-        }while (scelta != 0);
+        }while (scelta != "0");
     }
 
 
-    public int searchProductMenu() {
+    public String searchProductMenu() {
 
-        int sc = 0;
         try {
             System.out.println("Search product by: ");
             System.out.println("1. Product name");
             System.out.println("2. Productor name");
             System.out.println("3. Min price");
             System.out.println("4. Max price");
-            String s = this.br.readLine();
-            sc = Integer.parseInt(s);
+            String sc = this.br.readLine();
             return sc;
         }catch(IOException e){
             e.printStackTrace();
-            return 0;
+            return null;
         }
     }
 
@@ -193,7 +185,7 @@ public class Menu {
             scelta = searchProductMenu();
             switch (scelta){
 
-                case 1:
+                case "1":
                     System.out.println("Enter the product name to search: ");
                     String s1 = this.br.readLine();
                     for(Product pp : this.PL.getProductByNameProduct(s1)){
@@ -201,7 +193,7 @@ public class Menu {
                     }
                     break;
 
-                case 2:
+                case "2":
                     System.out.println("Enter the productor name to search: ");
                     String s2 = this.br.readLine();
                     for(Product pp : this.PL.getProductByNameProductor(s2)){
@@ -209,23 +201,23 @@ public class Menu {
                     }
                     break;
 
-                case 3:
+                case "3":
                     p = this.PL.getProductMinPrice();
                     System.out.println(p.getCode()+" "+p.getName()+" "+p.getNameproductor()+" €"+p.getPrice());
                     break;
 
-                case 4:
+                case "4":
                     p = this.PL.getProductMaxPrice();
                     System.out.println(p.getCode()+" "+p.getName()+" "+p.getNameproductor()+" €"+p.getPrice());
                     break;
 
-                case 0: break;
+                case "0": break;
 
                 default:
                     System.out.println("Incorrect choise, try again!");
                     break;
             }
-        }while (scelta != 0);
+        }while (scelta != "0");
     }
 
 
@@ -236,7 +228,7 @@ public class Menu {
         String quantity = this.br.readLine();
         int q = Integer.parseInt(quantity);
 
-        if(Objects.equals(name, "") && Objects.equals(q, "")){
+        if(Objects.equals(name, "") || Objects.equals(q, "")){
             System.out.println("Enter all fields!");
         }
         else{
@@ -320,8 +312,7 @@ public class Menu {
         }
     }
 
-    public int secondMenuCeo(){
-        int sc=0;
+    public String secondMenuCeo(){
         try {
             System.out.println("1. Create employee account");
             System.out.println("2. Delete employee account");
@@ -329,12 +320,11 @@ public class Menu {
             System.out.println("4. Delete product");
             System.out.println("5. Other product options");
             System.out.println("0. Exit");
-            String s = this.br.readLine();
-            sc = Integer.parseInt(s);
+            String sc = this.br.readLine();
             return sc;
         }catch(IOException e){
             e.printStackTrace();
-            return 0;
+            return null;
         }
     }
 
@@ -345,52 +335,50 @@ public class Menu {
             scelta = secondMenuCeo();
             switch (scelta){
 
-                case 1:
+                case "1":
                     checkNewAccount(true);
                     break;
 
-                case 2:
+                case "2":
                     this.UL.removeUser(searchUserById());
                     break;
 
-                case 3:
+                case "3":
                     checkNewProduct();
                     break;
 
-                case 4:
+                case "4":
                     this.PL.removeProduct(searchProductById());
                     break;
 
-                case 5: secondPageEmployee();
-
+                case "5": secondPageEmployee();
                     break;
-                case 0: break;
+
+                case "0": break;
                 default:
                     System.out.println("Incorrect choise, try again!");
                     break;
             }
-        }while (scelta != 0);
+        }while (scelta != "0");
     }
 
 
     public void addQuantityToProduct() throws IOException {
         System.out.println("Enter the ID product: ");
-        String i = this.br.readLine();
-        int ID = Integer.parseInt(i);
+        String ID = this.br.readLine();
         System.out.println("Enter the quantity: ");
         String quantity = this.br.readLine();
-        int q = Integer.parseInt(quantity);
 
-        if(Objects.equals(ID, "") && Objects.equals(q, "")){
+        if(Objects.equals(ID, "") || Objects.equals(quantity, "")){
             System.out.println("Enter all fields!");
         }
         else{
-            Product p = this.PL.getProductById(ID);
+            Product p = this.PL.getProductById(Integer.parseInt(ID));
             if(p == null) {
                 System.out.println("Product doesn't exist!");
             }
             else{
-                p.addQuantity(q);
+                p.addQuantity(Integer.parseInt(quantity));
                 System.out.println("Quantity update!");
             }
         }
