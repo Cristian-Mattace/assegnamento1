@@ -16,20 +16,22 @@ public class UserList {
         return this.users;
     }
 
-    public void addUser(User u){
+    public boolean addUser(User u){
 
         if(this.users.size() > 0) {
             for (User us : this.users) {
-                if (us.getEmail() == u.getEmail()) {
+                if (Objects.equals(us.getEmail(), u.getEmail())) {
                     System.out.println("Already exist account with the mail: " + u.getEmail());
-                    break;
-                } else {
-                    this.users.add(u);
-                    break;
+                    return false;
                 }
             }
+            this.users.add(u);
+            return true;
         }
-        else this.users.add(u);
+        else {
+            this.users.add(u);
+            return true;
+        }
     }
 
     public void removeUser(User u){
@@ -40,22 +42,23 @@ public class UserList {
 
         for(User u : this.users){
             if(Objects.equals(u.getEmail(), mail) && Objects.equals(u.getPassword(), psw)){
-                System.out.println("Ciao, "+u.getFirstName());
+                System.out.println("Benvenuto, "+ u.getFirstName());
                 return u.getId();
             }
         }
+        System.out.println("Login non riuscito");
         return 0;
 
     }
 
     public void stamp(){
         for(User u:this.users){
-            System.out.println(u.getEmail()+" "+u.getPassword());
+            System.out.println(u.getId()+" "+u.getEmail()+" "+u.getPassword());
         }
     }
 
-    public void listSize(){
-        System.out.println(this.users.size());
+    public int listSize(){
+        return this.users.size();
     }
 
 }
