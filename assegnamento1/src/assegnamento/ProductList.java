@@ -36,6 +36,8 @@ public class ProductList {
                 p.add(product);
             }
         }
+
+        if(p.size() == 0) System.out.println("Product doesn't exist");
         return p;
     }
 
@@ -48,6 +50,8 @@ public class ProductList {
                 p.add(product);
             }
         }
+
+        if(p.size() == 0) System.out.println("Product doesn't exist");
         return p;
     }
 

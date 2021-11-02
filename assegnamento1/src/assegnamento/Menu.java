@@ -30,7 +30,6 @@ public class Menu {
         try {
             System.out.println("1. Login");
             System.out.println("2. Create new account");
-            System.out.println("3. Delete account");
             System.out.println("0. Exit");
             String s = this.br.readLine();
             sc = Integer.parseInt(s);
@@ -50,18 +49,18 @@ public class Menu {
                     System.out.println("Insert Email: ");
                     String mail = this.br.readLine();
 
-                    this.UL.stamp();
-
                     System.out.println("Insert Password: ");
                     String psw=this.br.readLine();
-                    System.out.println(this.UL.accessSystem(mail, psw));
-                    secondPage();
+                    int idUser = 0;
+                    idUser = this.UL.accessSystem(mail, psw);
+                    if(idUser > 0) checkUser(idUser);
 
-                }catch(IOException ex){
-                    ex.printStackTrace();
-                }
+                    }catch(IOException ex){
+                        ex.printStackTrace();
+                    }
 
                     break;
+
                 case 2: try {
                     System.out.println("Insert nome: ");
                     String nome = this.br.readLine();
@@ -81,7 +80,6 @@ public class Menu {
                     ex.printStackTrace();
                 }
                     break;
-                case 3: break;
 
                 case 0: break;
 
@@ -92,6 +90,20 @@ public class Menu {
         }while (scelta != 0);
     }
 
+    public void checkUser(int ids){
+        for(User u : this.UL.getUsers()){
+
+            if(u.getId() == ids){
+                if(u.getEmployee().equals(true)){
+
+                    System.out.println("SEI UN DIPENDENTE!");
+
+                }else
+                    secondMenu();
+            }
+
+        }
+    }
 
     public int secondMenu(){
         int sc=0;
@@ -219,7 +231,7 @@ public class Menu {
 
     public boolean checkNewAccount(String n, String c, String e, String p){
 
-        if(Objects.equals(n, "") && Objects.equals(c, "") && Objects.equals(e, "") && Objects.equals(p, "")){
+        if(Objects.equals(n, "") || Objects.equals(c, "") || Objects.equals(e, "") || Objects.equals(p, "")){
             System.out.println("Enter all fields!");
             return false;
         }
@@ -230,5 +242,8 @@ public class Menu {
 
         return true;
     }
+
+
+
 
 }
