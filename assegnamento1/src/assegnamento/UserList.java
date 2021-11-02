@@ -61,4 +61,15 @@ public class UserList {
         return this.users.size();
     }
 
+
+    public User getUserById(int id){
+        for (User usr : this.users) {
+            if (Objects.equals(usr.getId(), id)) {
+                return usr;
+            }
+        }
+        System.out.println("An user with id "+id+"doesn't exist");
+        return null;
+    }
+
 }
