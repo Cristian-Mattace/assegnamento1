@@ -25,7 +25,7 @@ public class Main {
         //////////////////////////////////////////////////
 
         User uu1 = new User(1,"Utente1","c","x","cccc",false);
-        User uu2 = new User(2,"Utente2","c","y","cccc",false);
+        User uu2 = new User(2,"Utente2","c","y","y",true);
         User uu3 = new User(3,"Utente3","c","z","cccc",false);
         User uu4 = new User(4,"Utente4","c","xx","cccc",false);
 
