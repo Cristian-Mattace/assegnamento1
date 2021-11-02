@@ -211,7 +211,6 @@ public class Menu {
             else{
                 p.acquisto(q);
                 System.out.println("Great purchase!");
-                this.PL.stamp();
             }
         }
 
