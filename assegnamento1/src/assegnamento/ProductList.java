@@ -94,12 +94,4 @@ public class ProductList {
         return this.productList.size();
     }
 
-    public Product getProductById(int id){
-        for (Product product : this.productList) {
-            if (Objects.equals(product.getCode(), id)) {
-                return product;
-            }
-        }
-        return null;
-    }
 }
