@@ -75,9 +75,18 @@ public class ProductList {
         return p;
     }
 
+    public Product getProductById(int id){
+        for (Product product : this.productList) {
+            if (Objects.equals(product.getCode(), id)) {
+                return product;
+            }
+        }
+        return null;
+    }
+
     public void stamp(){
         for(Product p : this.productList){
-            System.out.println(p.getName());
+            System.out.println(p.getName()+" "+p.getCode()+" "+p.getNameproductor()+" €"+p.getPrice()+" "+p.getQuantity());
         }
     }
 }

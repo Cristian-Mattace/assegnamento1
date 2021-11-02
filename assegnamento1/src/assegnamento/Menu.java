@@ -90,7 +90,7 @@ public class Menu {
         }while (scelta != 0);
     }
 
-    public void checkUser(int ids){
+    public void checkUser(int ids) throws IOException {
         if(ids==1){
             System.out.println("AMMINISTRATORE");
         }
@@ -99,13 +99,49 @@ public class Menu {
             if(u.getId() == ids){
                 if(u.getEmployee().equals(true)){
 
-                    System.out.println("SEI UN DIPENDENTE!");
+                    secondPageEmployee();
 
                 }else
-                    secondMenuClient();
+                    secondPageClient();
             }
 
         }
+    }
+
+    public int secondMenuEmployee(){
+        int sc=0;
+        try {
+            System.out.println("1. List product");
+            System.out.println("2. Add quantity");
+            System.out.println("0. Exit");
+            String s = this.br.readLine();
+            sc = Integer.parseInt(s);
+            return sc;
+        }catch(IOException e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public void secondPageEmployee() throws IOException {
+
+        do{
+            scelta = secondMenuEmployee();
+            switch (scelta){
+
+                case 1:
+                    this.PL.stamp();
+                    break;
+
+                case 2:
+                    addQuantityToProduct();
+                    break;
+                case 0: break;
+                default:
+                    System.out.println("Incorrect choise, try again!");
+                    break;
+            }
+        }while (scelta != 0);
     }
 
     public int secondMenuClient(){
@@ -244,6 +280,29 @@ public class Menu {
         this.UL.addUser(u);
 
         return true;
+    }
+
+    public void addQuantityToProduct() throws IOException {
+        System.out.println("Enter the ID product: ");
+        String i = this.br.readLine();
+        int ID = Integer.parseInt(i);
+        System.out.println("Enter the quantity: ");
+        String quantity = this.br.readLine();
+        int q = Integer.parseInt(quantity);
+
+        if(Objects.equals(ID, "") && Objects.equals(q, "")){
+            System.out.println("Enter all fields!");
+        }
+        else{
+            Product p = this.PL.getProductById(ID);
+            if(p == null) {
+                System.out.println("Product doesn't exist!");
+            }
+            else{
+                p.addQuantity(q);
+                System.out.println("Quantity update!");
+            }
+        }
     }
 
 
