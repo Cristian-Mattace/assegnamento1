@@ -91,6 +91,9 @@ public class Menu {
     }
 
     public void checkUser(int ids){
+        if(ids==1){
+            System.out.println("AMMINISTRATORE");
+        }
         for(User u : this.UL.getUsers()){
 
             if(u.getId() == ids){
@@ -99,13 +102,13 @@ public class Menu {
                     System.out.println("SEI UN DIPENDENTE!");
 
                 }else
-                    secondMenu();
+                    secondMenuClient();
             }
 
         }
     }
 
-    public int secondMenu(){
+    public int secondMenuClient(){
         int sc=0;
         try {
             System.out.println("1. Search product");
@@ -121,10 +124,10 @@ public class Menu {
     }
 
 
-    public void secondPage() throws IOException {
+    public void secondPageClient() throws IOException {
 
         do{
-            scelta = secondMenu();
+            scelta = secondMenuClient();
             switch (scelta){
 
                 case 1:
