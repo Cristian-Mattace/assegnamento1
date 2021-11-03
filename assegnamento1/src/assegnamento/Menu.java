@@ -67,7 +67,7 @@ public class Menu {
                     System.out.println("Incorrect choise, try again!");
                     break;
             }
-        }while (scelta != "0");
+        }while (!scelta.equals("0"));
     }
 
     public void checkUser(int ids) throws IOException {
@@ -117,12 +117,12 @@ public class Menu {
                 case "2":
                     addQuantityToProduct();
                     break;
-                case "0": break;
+                case "0": firstPage();break;
                 default:
                     System.out.println("Incorrect choise, try again!");
                     break;
             }
-        }while (scelta != "0");
+        }while (!scelta.equals("0"));
     }
 
     public String secondMenuClient(){
@@ -152,12 +152,12 @@ public class Menu {
                 case "2":
                     productPurchase();
                     break;
-                case "0": break;
+                case "0": firstPage();break;
                 default:
                     System.out.println("Incorrect choise, try again!");
                     break;
             }
-        }while (scelta != "0");
+        }while (!scelta.equals("0"));
     }
 
 
@@ -169,6 +169,7 @@ public class Menu {
             System.out.println("2. Productor name");
             System.out.println("3. Min price");
             System.out.println("4. Max price");
+            System.out.println("0. Exit");
             String sc = this.br.readLine();
             return sc;
         }catch(Exception e){
@@ -211,13 +212,13 @@ public class Menu {
                     System.out.println(p.getCode()+" "+p.getName()+" "+p.getNameproductor()+" €"+p.getPrice());
                     break;
 
-                case "0": break;
+                case "0": secondPageClient();break;
 
                 default:
                     System.out.println("Incorrect choise, try again!");
                     break;
             }
-        }while (scelta != "0");
+        }while (!scelta.equals("0"));
     }
 
 
@@ -228,7 +229,7 @@ public class Menu {
         String quantity = this.br.readLine();
         int q = Integer.parseInt(quantity);
 
-        if(Objects.equals(name, "") || Objects.equals(q, "")){
+        if(Objects.equals(name, "") || Objects.equals(quantity, "")){
             System.out.println("Enter all fields!");
         }
         else{
@@ -354,12 +355,12 @@ public class Menu {
                 case "5": secondPageEmployee();
                     break;
 
-                case "0": break;
+                case "0": firstPage();break;
                 default:
                     System.out.println("Incorrect choise, try again!");
                     break;
             }
-        }while (scelta != "0");
+        }while (!scelta.equals("0"));
     }
 
 
@@ -379,7 +380,7 @@ public class Menu {
             }
             else{
                 p.addQuantity(Integer.parseInt(quantity));
-                System.out.println("Quantity update!");
+
             }
         }
     }

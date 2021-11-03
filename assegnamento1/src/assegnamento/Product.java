@@ -48,7 +48,22 @@ public class Product {
         return this.quantity;
     }
 
-    public void addQuantity(int q) { this.quantity = this.quantity + q; }
+    public void addQuantity(int q) {
+
+
+        this.quantity = this.quantity + q;
+
+        if(this.quantity<0){
+            this.quantity = this.quantity - q;
+            System.out.println("There are only "+ this.quantity + " stock product! Add more");
+        }else
+            System.out.println("Quantity update!");
+
+
+
+
+
+    }
 
     public boolean acquisto(int q){
         if(q > this.quantity){
