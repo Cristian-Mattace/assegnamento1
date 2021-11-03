@@ -50,7 +50,6 @@ public class Product {
 
     public void addQuantity(int q) {
 
-
         this.quantity = this.quantity + q;
 
         if(this.quantity<0){
@@ -58,11 +57,6 @@ public class Product {
             System.out.println("There are only "+ this.quantity + " stock product! Add more");
         }else
             System.out.println("Quantity update!");
-
-
-
-
-
     }
 
     public boolean acquisto(int q){
@@ -75,6 +69,10 @@ public class Product {
             System.out.println("Purchase made, new quantity : " + this.quantity);
             return true;
         }
+    }
+
+    public void stamp(){
+        System.out.println(this.getCode()+" "+this.getName()+" "+this.getNameproductor()+" €"+this.getPrice()+" "+this.getQuantity());
     }
 
 }

@@ -27,7 +27,7 @@ public class ProductList {
         return this.productList.size();
     }
 
-    public List<Product> getProductByNameProduct(String n){
+    public ArrayList<Product> getProductByNameProduct(String n){
 
         ArrayList<Product> p = new ArrayList<>();
 
@@ -41,7 +41,7 @@ public class ProductList {
         return p;
     }
 
-    public List<Product> getProductByNameProductor(String n){
+    public ArrayList<Product> getProductByNameProductor(String n){
 
         ArrayList<Product> p = new ArrayList<>();
 
@@ -81,6 +81,7 @@ public class ProductList {
                 return product;
             }
         }
+        System.out.println("Product doesn't exist");
         return null;
     }
 

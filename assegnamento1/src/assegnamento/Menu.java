@@ -9,8 +9,8 @@ import java.util.Scanner;
 
 public class Menu {
     private String scelta;
-    private UserList UL;
-    private ProductList PL;
+    private final UserList UL;
+    private final ProductList PL;
     private int ids;
     private InputStreamReader isr;
     private BufferedReader br;
@@ -29,8 +29,7 @@ public class Menu {
             System.out.println("1. Login");
             System.out.println("2. Create new account");
             System.out.println("0. Exit");
-            String sc = this.br.readLine();
-            return sc;
+            return this.br.readLine();
         }catch(Exception e){
             System.out.println("ERRORE: " + e);
             return null;
@@ -42,20 +41,20 @@ public class Menu {
         do{
             scelta=firstMenu();
             switch (scelta){
-                case "1": try {
-                    System.out.println("Insert Email: ");
-                    String mail = this.br.readLine();
+                case "1":
+                    try {
+                        System.out.println("Insert Email: ");
+                        String mail = this.br.readLine();
 
-                    System.out.println("Insert Password: ");
-                    String psw=this.br.readLine();
-                    int idUser = 0;
-                    idUser = this.UL.accessSystem(mail, psw);
-                    if(idUser > 0) checkUser(idUser);
-
-                    }catch(IOException ex){
-                        ex.printStackTrace();
+                        System.out.println("Insert Password: ");
+                        String psw=this.br.readLine();
+                        int idUser = 0;
+                        idUser = this.UL.accessSystem(mail, psw);
+                        if(idUser > 0) checkUser(idUser);
                     }
-
+                    catch(Exception e){
+                        System.out.println("ERRORE: " + e);
+                    }
                     break;
 
                 case "2": checkNewAccount(false);
@@ -70,68 +69,80 @@ public class Menu {
         }while (!scelta.equals("0"));
     }
 
-    public void checkUser(int ids) throws IOException {
-        if(ids==1){
-            System.out.println("AMMINISTRATORE");
-            secondPageCeo();
-        }
-        else {
-            for (User u : this.UL.getUsers()) {
 
-                if (u.getId() == ids) {
-                    if (u.getEmployee().equals(true)) {
+    public void checkUser(int ids){
+        try {
+            if (ids == 1) {
+                System.out.println("AMMINISTRATORE");
+                secondPageCeo();
+            } else {
+                for (User u : this.UL.getUsers()) {
 
-                        secondPageEmployee();
-
-                    } else
-                        secondPageClient();
+                    if (u.getId() == ids) {
+                        if (u.getEmployee().equals(true)) {
+                            secondPageEmployee();
+                        } else
+                            secondPageClient();
+                    }
                 }
-
             }
         }
+        catch(Exception e){
+            System.out.println("ERRORE: " + e);
+        }
     }
+
 
     public String secondMenuEmployee(){
         try {
             System.out.println("1. List product");
             System.out.println("2. Add quantity");
             System.out.println("0. Exit");
-            String sc = this.br.readLine();
-            return sc;
+            return this.br.readLine();
         }catch(Exception e){
             System.out.println("ERRORE: " + e);
             return null;
         }
     }
 
-    public void secondPageEmployee() throws IOException {
 
-        do{
-            scelta = secondMenuEmployee();
-            switch (scelta){
 
-                case "1":
-                    this.PL.stamp();
-                    break;
+    public void secondPageEmployee(){
+        try {
+            do {
+                scelta = secondMenuEmployee();
+                switch (scelta) {
 
-                case "2":
-                    addQuantityToProduct();
-                    break;
-                case "0": firstPage();break;
-                default:
-                    System.out.println("Incorrect choise, try again!");
-                    break;
-            }
-        }while (!scelta.equals("0"));
+                    case "1":
+                        this.PL.stamp();
+                        break;
+
+                    case "2":
+                        addQuantityToProduct();
+                        break;
+                    case "0":
+                        firstPage();
+                        break;
+                    default:
+                        System.out.println("Incorrect choise, try again!");
+                        break;
+                }
+            } while (!scelta.equals("0"));
+        }
+        catch(Exception e){
+            System.out.println("ERRORE: " + e);
+        }
     }
+
+
 
     public String secondMenuClient(){
         try {
             System.out.println("1. Search product");
             System.out.println("2. Buy products");
+            System.out.println("3. List product");
             System.out.println("0. Exit");
-            String sc = this.br.readLine();
-            return sc;
+            return this.br.readLine();
         }catch(Exception e){
             System.out.println("ERRORE: " + e);
             return null;
@@ -139,26 +150,40 @@ public class Menu {
     }
 
 
-    public void secondPageClient() throws IOException {
 
-        do{
-            scelta = secondMenuClient();
-            switch (scelta){
+    public void secondPageClient(){
+        try {
+            do {
+                scelta = secondMenuClient();
+                switch (scelta) {
 
-                case "1":
-                    searchProductPage();
-                    break;
+                    case "1":
+                        searchProductPage();
+                        break;
 
-                case "2":
-                    productPurchase();
-                    break;
-                case "0": firstPage();break;
-                default:
-                    System.out.println("Incorrect choise, try again!");
-                    break;
-            }
-        }while (!scelta.equals("0"));
+                    case "2":
+                        productPurchase();
+                        break;
+
+                    case "3":
+                        this.PL.stamp();
+                        break;
+
+                    case "0":
+                        firstPage();
+                        break;
+
+                    default:
+                        System.out.println("Incorrect choise, try again!");
+                        break;
+                }
+            } while (!scelta.equals("0"));
+        }
+        catch(Exception e){
+            System.out.println("ERRORE: " + e);
+        }
     }
+
 
 
     public String searchProductMenu() {
@@ -170,8 +195,7 @@ public class Menu {
             System.out.println("3. Min price");
             System.out.println("4. Max price");
             System.out.println("0. Exit");
-            String sc = this.br.readLine();
-            return sc;
+            return this.br.readLine();
         }catch(Exception e){
             System.out.println("ERRORE: " + e);
             return null;
@@ -179,74 +203,95 @@ public class Menu {
     }
 
 
-    public void searchProductPage() throws IOException {
 
-        Product p = new Product();
-        do{
-            scelta = searchProductMenu();
-            switch (scelta){
+    public void searchProductPage(){
+        try {
+            Product p = new Product();
+            do {
+                scelta = searchProductMenu();
+                switch (scelta) {
 
-                case "1":
-                    System.out.println("Enter the product name to search: ");
-                    String s1 = this.br.readLine();
-                    for(Product pp : this.PL.getProductByNameProduct(s1)){
-                        System.out.println(pp.getCode()+" "+pp.getName()+" "+pp.getNameproductor()+" €"+pp.getPrice());
-                    }
-                    break;
+                    case "1":
+                        System.out.println("Enter the product name to search: ");
+                        String s1 = this.br.readLine();
+                        for (Product pp : this.PL.getProductByNameProduct(s1)) {
+                            System.out.println(pp.getCode() + " " + pp.getName() + " " + pp.getNameproductor() + " €" + pp.getPrice());
+                        }
+                        break;
 
-                case "2":
-                    System.out.println("Enter the productor name to search: ");
-                    String s2 = this.br.readLine();
-                    for(Product pp : this.PL.getProductByNameProductor(s2)){
-                        System.out.println(pp.getCode()+" "+pp.getName()+" "+pp.getNameproductor()+" €"+pp.getPrice());
-                    }
-                    break;
+                    case "2":
+                        System.out.println("Enter the productor name to search: ");
+                        String s2 = this.br.readLine();
+                        for (Product pp : this.PL.getProductByNameProductor(s2)) {
+                            System.out.println(pp.getCode() + " " + pp.getName() + " " + pp.getNameproductor() + " €" + pp.getPrice());
+                        }
+                        break;
 
-                case "3":
-                    p = this.PL.getProductMinPrice();
-                    System.out.println(p.getCode()+" "+p.getName()+" "+p.getNameproductor()+" €"+p.getPrice());
-                    break;
+                    case "3":
+                        p = this.PL.getProductMinPrice();
+                        System.out.println(p.getCode() + " " + p.getName() + " " + p.getNameproductor() + " €" + p.getPrice());
+                        break;
 
-                case "4":
-                    p = this.PL.getProductMaxPrice();
-                    System.out.println(p.getCode()+" "+p.getName()+" "+p.getNameproductor()+" €"+p.getPrice());
-                    break;
+                    case "4":
+                        p = this.PL.getProductMaxPrice();
+                        System.out.println(p.getCode() + " " + p.getName() + " " + p.getNameproductor() + " €" + p.getPrice());
+                        break;
 
-                case "0": secondPageClient();break;
+                    case "0":
+                        secondPageClient();
+                        break;
 
-                default:
-                    System.out.println("Incorrect choise, try again!");
-                    break;
-            }
-        }while (!scelta.equals("0"));
+                    default:
+                        System.out.println("Incorrect choise, try again!");
+                        break;
+                }
+            } while (!scelta.equals("0"));
+        }
+        catch(Exception e){
+            System.out.println("ERRORE: " + e);
+        }
     }
 
 
-    public void productPurchase() throws IOException {
-        System.out.println("Enter the name product to buy: ");
-        String name = this.br.readLine();
-        System.out.println("Enter the quantity: ");
-        String quantity = this.br.readLine();
-        int q = Integer.parseInt(quantity);
 
-        if(Objects.equals(name, "") || Objects.equals(quantity, "")){
-            System.out.println("Enter all fields!!");
+    public void productPurchase(){
+        try {
+            System.out.println("Enter the ID product to buy: ");
+            String ID = this.br.readLine();
+
+            if (Objects.equals(ID, "")) {
+                System.out.println("Enter the ID!!");
+            } else {
+
+                Product prod = this.PL.getProductById(Integer.parseInt(ID));
+
+                if (prod == null) secondPageClient();
+
+                System.out.println("Enter the quantity: ");
+                String quantity = this.br.readLine();
+                if (Objects.equals(quantity, "") || Integer.parseInt(quantity) < 1) {
+                    System.out.println("Enter correct quantity!!");
+                } else {
+                    int q = Integer.parseInt(quantity);
+
+                    if (prod.getQuantity() < q) {
+                        System.out.println("Quantity too big!");
+                    } else {
+                        prod.acquisto(q);
+                        System.out.println("Great purchase!");
+                    }
+                }
+            }
         }
-        else{
-            Product p = this.PL.getProductByNameProduct(name).get(0);
-            if(p.getQuantity() < q) {
-                System.out.println("Quantity too big!");
-            }
-            else{
-                p.acquisto(q);
-                System.out.println("Great purchase!");
-            }
+        catch(Exception e){
+            System.out.println("ERRORE: " + e);
         }
 
     }
 
 
-    public boolean checkNewAccount(boolean emlpoyee){
+
+    public void checkNewAccount(boolean emlpoyee){
 
         try {
 
@@ -264,26 +309,21 @@ public class Menu {
 
             if(Objects.equals(nome, "") || Objects.equals(cognome, "") || Objects.equals(email, "") || Objects.equals(psw, "")){
                 System.out.println("Enter all fields!");
-                return false;
             }
-
-            User u = new User(this.UL.listSize()+1, nome,cognome,email,psw,emlpoyee);
-
-            this.UL.addUser(u);
-
-            return true;
-
+            else {
+                User u = new User(this.UL.listSize() + 1, nome, cognome, email, psw, emlpoyee);
+                this.UL.addUser(u);
+            }
         }catch(Exception e){
             System.out.println("ERRORE: " + e);
-            return false;
         }
     }
 
 
-    public boolean checkNewProduct(){
+
+    public void checkNewProduct(){
 
         try {
-
             System.out.println("Insert name: ");
             String name = this.br.readLine();
 
@@ -298,20 +338,18 @@ public class Menu {
 
             if(Objects.equals(name, "") || Objects.equals(productor_name, "") || Objects.equals(price, "") || Objects.equals(quantity, "")){
                 System.out.println("Enter all fields!");
-                return false;
             }
+            else {
 
-            Product prd = new Product(name,this.PL.listSize()+1,productor_name,Float.parseFloat(price),Integer.parseInt(quantity));
-
-            this.PL.addProductList(prd);
-
-            return true;
-
+                Product prd = new Product(name, this.PL.listSize() + 1, productor_name, Float.parseFloat(price), Integer.parseInt(quantity));
+                this.PL.addProductList(prd);
+            }
         }catch(Exception e){
             System.out.println("ERRORE: " + e);
-            return false;
         }
     }
+
+
 
     public String secondMenuCeo(){
         try {
@@ -330,60 +368,74 @@ public class Menu {
     }
 
 
-    public void secondPageCeo() throws IOException {
 
-        do{
-            scelta = secondMenuCeo();
-            switch (scelta){
+    public void secondPageCeo(){
+        try {
+            do {
+                scelta = secondMenuCeo();
+                switch (scelta) {
 
-                case "1":
-                    checkNewAccount(true);
-                    break;
+                    case "1":
+                        checkNewAccount(true);
+                        break;
 
-                case "2":
-                    this.UL.removeUser(searchUserById());
-                    break;
+                    case "2":
+                        this.UL.removeUser(searchUserById());
+                        break;
 
-                case "3":
-                    checkNewProduct();
-                    break;
+                    case "3":
+                        checkNewProduct();
+                        break;
 
-                case "4":
-                    this.PL.removeProduct(searchProductById());
-                    break;
+                    case "4":
+                        this.PL.removeProduct(searchProductById());
+                        break;
 
-                case "5": secondPageEmployee();
-                    break;
+                    case "5":
+                        secondPageEmployee();
+                        break;
 
-                case "0": firstPage();break;
-                default:
-                    System.out.println("Incorrect choise, try again!");
-                    break;
+                    case "0":
+                        firstPage();
+                        break;
+                    default:
+                        System.out.println("Incorrect choise, try again!");
+                        break;
+                }
+            } while (!scelta.equals("0"));
+        }
+        catch(Exception e){
+            System.out.println("ERRORE: " + e);
+        }
+    }
+
+
+
+    public void addQuantityToProduct(){
+        try {
+            System.out.println("Enter the ID product: ");
+            String ID = this.br.readLine();
+            System.out.println("Enter the quantity: ");
+            String quantity = this.br.readLine();
+
+            if (Objects.equals(ID, "") || Objects.equals(quantity, "")) {
+                System.out.println("Enter all fields!");
+            } else {
+                Product p = this.PL.getProductById(Integer.parseInt(ID));
+                if (p == null) {
+                    System.out.println("Product doesn't exist!");
+                } else {
+                    p.addQuantity(Integer.parseInt(quantity));
+
+                }
             }
-        }while (!scelta.equals("0"));
+        }
+        catch(Exception e){
+            System.out.println("ERRORE: " + e);
+        }
     }
 
 
-    public void addQuantityToProduct() throws IOException {
-        System.out.println("Enter the ID product: ");
-        String ID = this.br.readLine();
-        System.out.println("Enter the quantity: ");
-        String quantity = this.br.readLine();
-
-        if(Objects.equals(ID, "") || Objects.equals(quantity, "")){
-            System.out.println("Enter all fields!");
-        }
-        else{
-            Product p = this.PL.getProductById(Integer.parseInt(ID));
-            if(p == null) {
-                System.out.println("Product doesn't exist!");
-            }
-            else{
-                p.addQuantity(Integer.parseInt(quantity));
-
-            }
-        }
-    }
 
     public User searchUserById(){
         try {
@@ -396,6 +448,8 @@ public class Menu {
         }
     }
 
+
+
     public Product searchProductById(){
         try {
             System.out.println("Insert product's id: ");
@@ -407,6 +461,5 @@ public class Menu {
             return null;
         }
     }
-
 
 }
