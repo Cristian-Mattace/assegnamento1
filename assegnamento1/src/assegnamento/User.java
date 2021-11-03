@@ -1,6 +1,6 @@
 package assegnamento;
 
-import java.io.Serializable;
+//import java.io.Serializable;
 
 /**
  *
@@ -8,9 +8,9 @@ import java.io.Serializable;
  * simplified model of an employee that satisfies JavaBean conventions.
  *
 **/
-public class User implements Serializable
+public class User// implements Serializable
 {
-  private static final long serialVersionUID = 1L;
+  //private static final long serialVersionUID = 1L;
 
   private int id;
   private String firstName;
