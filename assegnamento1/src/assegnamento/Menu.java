@@ -230,7 +230,7 @@ public class Menu {
         int q = Integer.parseInt(quantity);
 
         if(Objects.equals(name, "") || Objects.equals(quantity, "")){
-            System.out.println("Enter all fields!");
+            System.out.println("Enter all fields!!");
         }
         else{
             Product p = this.PL.getProductByNameProduct(name).get(0);
