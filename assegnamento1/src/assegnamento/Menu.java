@@ -31,8 +31,8 @@ public class Menu {
             System.out.println("0. Exit");
             String sc = this.br.readLine();
             return sc;
-        }catch(IOException e){
-            e.printStackTrace();
+        }catch(Exception e){
+            System.out.println("ERRORE: " + e);
             return null;
         }
     }
@@ -98,8 +98,8 @@ public class Menu {
             System.out.println("0. Exit");
             String sc = this.br.readLine();
             return sc;
-        }catch(IOException e){
-            e.printStackTrace();
+        }catch(Exception e){
+            System.out.println("ERRORE: " + e);
             return null;
         }
     }
@@ -132,8 +132,8 @@ public class Menu {
             System.out.println("0. Exit");
             String sc = this.br.readLine();
             return sc;
-        }catch(IOException e){
-            e.printStackTrace();
+        }catch(Exception e){
+            System.out.println("ERRORE: " + e);
             return null;
         }
     }
@@ -171,8 +171,8 @@ public class Menu {
             System.out.println("4. Max price");
             String sc = this.br.readLine();
             return sc;
-        }catch(IOException e){
-            e.printStackTrace();
+        }catch(Exception e){
+            System.out.println("ERRORE: " + e);
             return null;
         }
     }
@@ -249,10 +249,10 @@ public class Menu {
 
         try {
 
-            System.out.println("Insert nome: ");
+            System.out.println("Insert first name: ");
             String nome = this.br.readLine();
 
-            System.out.println("Insert cognome: ");
+            System.out.println("Insert last name: ");
             String cognome=this.br.readLine();
 
             System.out.println("Insert email: ");
@@ -272,9 +272,9 @@ public class Menu {
 
             return true;
 
-        }catch(IOException ex){
-            ex.printStackTrace();
-            return  false;
+        }catch(Exception e){
+            System.out.println("ERRORE: " + e);
+            return false;
         }
     }
 
@@ -306,9 +306,9 @@ public class Menu {
 
             return true;
 
-        }catch(IOException ex){
-            ex.printStackTrace();
-            return  false;
+        }catch(Exception e){
+            System.out.println("ERRORE: " + e);
+            return false;
         }
     }
 
@@ -322,8 +322,8 @@ public class Menu {
             System.out.println("0. Exit");
             String sc = this.br.readLine();
             return sc;
-        }catch(IOException e){
-            e.printStackTrace();
+        }catch(Exception e){
+            System.out.println("ERRORE: " + e);
             return null;
         }
     }
@@ -389,21 +389,20 @@ public class Menu {
             System.out.println("Inserte user's id: ");
             String ids = this.br.readLine();
             return this.UL.getUserById(Integer.parseInt(ids));
-        }catch(IOException e){
-            e.printStackTrace();
-
+        }catch(Exception e){
+            System.out.println("ERRORE: " + e);
             return null;
         }
     }
 
     public Product searchProductById(){
         try {
-            System.out.println("Inserte product's id: ");
+            System.out.println("Insert product's id: ");
             String ids = this.br.readLine();
-            return this.PL.getProductById(Integer.parseInt(ids));
-        }catch(IOException e){
-            e.printStackTrace();
 
+            return this.PL.getProductById(Integer.parseInt(ids));
+        }catch(Exception e){
+            System.out.println("ERRORE: " + e);
             return null;
         }
     }
