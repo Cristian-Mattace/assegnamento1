@@ -2,41 +2,42 @@ package assegnamento;
 
 import java.util.List;
 
+/**
+ * The class {@code Main} is the initial class of the project
+ */
+
 public class Main {
 
+    /**
+     * Initial Main method
+     */
     public static void main(String[] args) {
 	// write your code here
-        Product pri = new Product("Prodotto1",1,"rino", (float) 12.90, 2);
-        Product sec = new Product("Prodotto2",2,"pino", (float) 12.90, 4);
-        Product ter = new Product("Prodotto3",3,"gino", (float) 1.00, 5);
-        Product qua = new Product("Prodotto4",4,"fino", (float) 12.90, 1);
-        Product qui = new Product("Prodotto5",5,"sino", (float) 12.90, 1);
+        Product processor = new Product("Processor",1,"Intel", (float) 150.00, 2);
+        Product video = new Product("Video card",2,"Intel", (float) 90.00, 4);
+        Product desktop = new Product("Desktop",3,"Hp", (float) 190.00, 1);
+        Product mouse = new Product("Mouse",4,"Logitech", (float) 12.90, 5);
 
         ProductList pp = new ProductList();
 
-        pp.addProductList(pri);
-        pp.addProductList(sec);
-        pp.addProductList(ter);
-        pp.addProductList(qua);
-        pp.addProductList(qui);
+        pp.addProductList(processor);
+        pp.addProductList(video);
+        pp.addProductList(desktop);
+        pp.addProductList(mouse);
 
-        //pp.stamp();
-
-        //////////////////////////////////////////////////
-
-        User uu1 = new User(1,"Utente1","c","x","cccc",true);
-        User uu2 = new User(2,"Utente2","c","y","y",true);
-        User uu3 = new User(3,"Utente3","c","z","cccc",false);
-        User uu4 = new User(4,"Utente4","c","xx","cccc",false);
+        User CEO = new User(1,"CEO","66","ceo66@gmail.com","ceo66",true);
+        User employee1 = new User(2,"Pippo","1","pippo@gmail.com","pippo",true);
+        User employee2 = new User(3,"Pluto","2","pluto@gmail.com","pluto",true);
+        User client1 = new User(4,"Caio","1","caio@gmail.com","caio",false);
+        User client2 = new User(5,"Sempronio","2","sempronio@gmail.com","sempronio",false);
 
         UserList us = new UserList();
 
-        us.addUser(uu1);
-        us.addUser(uu2);
-        us.addUser(uu3);
-        us.addUser(uu4);
-
-        //us.stamp();
+        us.addUser(CEO);
+        us.addUser(employee1);
+        us.addUser(employee2);
+        us.addUser(client1);
+        us.addUser(client2);
 
         Menu mn = new Menu(us, pp);
         mn.firstPage();

@@ -20,6 +20,7 @@ public class UserList {
     }
 
     /**
+     * It returns the user's list
      * @return the user's list
      */
     public List<User> getUsers(){
@@ -27,6 +28,7 @@ public class UserList {
     }
 
     /**
+     * It handles adding a new user to the user list
      * @param u the user that will be added to the list
      * @return true, if the add was succesfull
      *          false, if the add was wrong
@@ -50,13 +52,16 @@ public class UserList {
     }
 
     /**
+     * It removes user from the user list
      * @param u the user that will be removed from the list
      */
     public void removeUser(User u){
         this.users.remove(u);
     }
 
+
     /**
+     * It manages the access to the system
      * @param mail the user's mail
      * @param psw the user's password
      * @return  the id of users with the same mail and password
@@ -75,7 +80,7 @@ public class UserList {
     }
 
     /**
-     * print all info of all user in the list
+     * It prints all info of all user in the list
      */
     public void stamp(){
         for(User u:this.users){
@@ -84,6 +89,7 @@ public class UserList {
     }
 
     /**
+     * It calculates the number of user in the list
      * @return the number of user in the list
      */
     public int listSize(){
@@ -92,6 +98,7 @@ public class UserList {
 
 
     /**
+     * It takes the ID, and it finds the user in the list by the ID
      * @param id the user's id
      * @return the user with the same id
      */

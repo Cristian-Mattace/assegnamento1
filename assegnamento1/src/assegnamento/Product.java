@@ -29,6 +29,7 @@ public class Product {
 
 
     /**
+     * Class constructor with parameters
      * @param nam the product's name
      * @param cod the product's code to recognize it
      * @param nameProd the producer of product
@@ -44,30 +45,31 @@ public class Product {
     }
 
     /**
+     * It returns the product's name
      * @return the product's name
      */
     public String getName(){
-
         return this.name;
     }
 
     /**
+     * It returns the product's code
      * @return the product's code
      */
     public int getCode(){
-
         return this.code;
     }
 
     /**
-     * @return the producer's name of product
+     * It returns the producer's name of the product
+     * @return the producer's name of the product
      */
     public String getNameproductor(){
-
         return this.name_productor;
     }
 
     /**
+     * It returns the product's price
      * @return the product's price
      */
     public float getPrice(){
@@ -76,6 +78,7 @@ public class Product {
     }
 
     /**
+     * It returns the product's quantity
      * @return the product's quantity
      */
     public int getQuantity(){
@@ -83,6 +86,7 @@ public class Product {
     }
 
     /**
+     * It adds quantity to the product
      * @param q quantity of product
      *          to incrase or decrase from stock.
      */
@@ -98,6 +102,7 @@ public class Product {
     }
 
     /**
+     * It finalizes the purchase of the product
      * @param q the quantity of product that a client
      *          would buy
      * @return true, if the purchase was succesfull
@@ -116,7 +121,7 @@ public class Product {
     }
 
     /**
-     * print all the info of product
+     * It prints all the info of product
      */
     public void stamp(){
         System.out.println(this.getCode()+" "+this.getName()+" "+this.getNameproductor()+" €"+this.getPrice()+" "+this.getQuantity());

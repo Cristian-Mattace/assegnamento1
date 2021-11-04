@@ -21,6 +21,7 @@ public class ProductList {
     }
 
     /**
+     * Add product to the list's product
      * @param p the product that will be added to the list
      */
     public void addProductList(Product p) {
@@ -28,6 +29,7 @@ public class ProductList {
     }
 
     /**
+     * Remove the product from the list of product
      * @param p the product that will be removed from the list
      */
     public void removeProduct(Product p){
@@ -35,6 +37,7 @@ public class ProductList {
     }
 
     /**
+     * Return the list's product
      * @return the list's product
      */
     public List<Product> getProductList(){
@@ -42,6 +45,7 @@ public class ProductList {
     }
 
     /**
+     * Return the number of the product in the list
      * @return the number of product in the list
      */
     public int listSize(){
@@ -49,6 +53,7 @@ public class ProductList {
     }
 
     /**
+     * It takes a string as input and returns the array list of products with that name
      * @param n the name of product
      * @return the product with the same name
      */
@@ -71,6 +76,7 @@ public class ProductList {
     }
 
     /**
+     * It takes a string as input and returns the array list of products with that productor
      * @param n the name of producer's product
      * @return the product with the same name of producer
      */
@@ -89,6 +95,7 @@ public class ProductList {
     }
 
     /**
+     * It calculates the minimum price of the products in the product list
      * @return the product with the min price
      */
     public Product getProductMinPrice(){
@@ -102,6 +109,7 @@ public class ProductList {
     }
 
     /**
+     * It calculates the maximum price of the products in the product list
      * @return the product with the max price
      */
     public Product getProductMaxPrice(){
@@ -115,6 +123,7 @@ public class ProductList {
     }
 
     /**
+     * It finds the product with that ID
      * @param id the product's id
      * @return the product with the same id
      */
@@ -129,7 +138,7 @@ public class ProductList {
     }
 
     /**
-     * print all info of all product in the list
+     * Print all info of all product in the list
      */
     public void stamp(){
         for(Product p : this.productList){

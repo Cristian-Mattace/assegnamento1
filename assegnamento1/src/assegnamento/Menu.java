@@ -22,8 +22,8 @@ public class Menu {
 
     /**
      * Class constructor
-     * @param userl the list of users
-     * @param productl the list of products
+     * @param userl The list of users
+     * @param productl The list of products
      */
     public Menu(UserList userl, ProductList productl){
         this.scelta="";
@@ -35,7 +35,8 @@ public class Menu {
     }
 
     /**
-     * @return the choice made by the user/client/ceo
+     * It shows the first possible choices
+     * @return The choice made by the user/client/ceo
      */
     public String firstMenu(){
         try {
@@ -50,7 +51,7 @@ public class Menu {
     }
 
     /**
-     * the first menu that appears
+     * It manages the first possible choices
      */
     public void firstPage(){
 
@@ -87,7 +88,8 @@ public class Menu {
 
 
     /**
-     * @param ids the user's id
+     * It manages the various users according to their rank
+     * @param ids The user's id
      *            the fucntion check if the users
      *            that login the program is
      *            1-> CEO
@@ -118,7 +120,8 @@ public class Menu {
 
 
     /**
-     * @return the choice made by the employee after login
+     * It shows the employee's possible choices
+     * @return The choice made by the employee after login
      */
     public String secondMenuEmployee(){
         try {
@@ -134,7 +137,7 @@ public class Menu {
 
 
     /**
-     * the menu that appears to employees after login
+     * It manages the possible choices of the employee
      */
     public void secondPageEmployee(){
         try {
@@ -165,7 +168,8 @@ public class Menu {
 
 
     /**
-     * @return the choice made by the client after login
+     * It shows the client's possible choices
+     * @return The choice made by the client after login
      */
     public String secondMenuClient(){
         try {
@@ -182,7 +186,8 @@ public class Menu {
 
 
     /**
-     * the menu that appears to client after login
+     * It manages the possible choices of the client
+     * The menu that appears to client after login
      */
     public void secondPageClient(){
         try {
@@ -219,7 +224,8 @@ public class Menu {
 
 
     /**
-     * @return the choice made by the client after Search product
+     * It shows the possible choices of the client in the search for products
+     * @return The choice made by the client after Search product
      */
     public String searchProductMenu() {
 
@@ -239,7 +245,7 @@ public class Menu {
 
 
     /**
-     *  the menu that appears to client after Search product
+     * It manages the possible choices of the client in the search for products
      */
     public void searchProductPage(){
         try {
@@ -291,7 +297,7 @@ public class Menu {
 
 
     /**
-     * the method of controll of product purchase
+     * It manages the purchase of products by the client
      */
     public void productPurchase(){
         try {
@@ -332,7 +338,8 @@ public class Menu {
 
 
     /**
-     * @param emlpoyee check if the user si an employee
+     * It manages the creation of new accounts
+     * @param emlpoyee Check if the user si an employee
      *                 the metod checks the creations of new accounts
      */
     public void checkNewAccount(boolean emlpoyee){
@@ -364,7 +371,9 @@ public class Menu {
     }
 
 
-
+    /**
+     * It manages the creation of new product
+     */
     public void checkNewProduct(){
 
         try {
@@ -394,7 +403,10 @@ public class Menu {
     }
 
 
-
+    /**
+     * It shows the possible choices of the CEO
+     * @return The choice made by the CEO
+     */
     public String secondMenuCeo(){
         try {
             System.out.println("1. Create employee account");
@@ -412,7 +424,9 @@ public class Menu {
     }
 
 
-
+    /**
+     * It manages the possible choices of the CEO
+     */
     public void secondPageCeo(){
         try {
             do {
@@ -454,7 +468,9 @@ public class Menu {
     }
 
 
-
+    /**
+     * It manages the addition of quantities to various products by employees
+     */
     public void addQuantityToProduct(){
         try {
             System.out.println("Enter the ID product: ");
@@ -480,7 +496,10 @@ public class Menu {
     }
 
 
-
+    /**
+     * It finds the user in the user list by the ID
+     * @return The user found
+     */
     public User searchUserById(){
         try {
             System.out.println("Inserte user's id: ");
@@ -493,7 +512,10 @@ public class Menu {
     }
 
 
-
+    /**
+     * It finds the product in the product list by the ID
+     * @return The product found
+     */
     public Product searchProductById(){
         try {
             System.out.println("Insert product's id: ");

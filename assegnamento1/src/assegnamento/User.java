@@ -34,7 +34,7 @@ public class User// implements Serializable
   }
 
   /**
-   * Class constructor.
+   * Class constructor with parameters
    *
    * @param i    the user's id.
    * @param fName    the user'sfirst name.
@@ -164,7 +164,10 @@ public class User// implements Serializable
     this.password = p;
   }
 
-
+  /**
+   * Gets the value of the employee attribute to figure out if it is an employee or a client
+   * @return The boolean value of employee
+   */
   public Boolean getEmployee()
   {
     return this.employee;
