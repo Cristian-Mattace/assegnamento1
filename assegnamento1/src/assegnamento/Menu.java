@@ -6,7 +6,12 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
-
+/**
+ *
+ * The class {@code Menu} provides an implementation of a
+ * models of menu
+ *
+ **/
 public class Menu {
     private String scelta;
     private final UserList UL;
@@ -15,6 +20,11 @@ public class Menu {
     private InputStreamReader isr;
     private BufferedReader br;
 
+    /**
+     * Class constructor
+     * @param userl the list of users
+     * @param productl the list of products
+     */
     public Menu(UserList userl, ProductList productl){
         this.scelta="";
         this.UL = userl;
@@ -24,6 +34,9 @@ public class Menu {
         this.br = new BufferedReader(this.isr);
     }
 
+    /**
+     * @return the choice made by the user/client/ceo
+     */
     public String firstMenu(){
         try {
             System.out.println("1. Login");
@@ -36,6 +49,9 @@ public class Menu {
         }
     }
 
+    /**
+     * the first menu that appears
+     */
     public void firstPage(){
 
         do{
@@ -70,6 +86,14 @@ public class Menu {
     }
 
 
+    /**
+     * @param ids the user's id
+     *            the fucntion check if the users
+     *            that login the program is
+     *            1-> CEO
+     *            2->Client
+     *            3->Employee
+     */
     public void checkUser(int ids){
         try {
             if (ids == 1) {
@@ -93,6 +117,9 @@ public class Menu {
     }
 
 
+    /**
+     * @return the choice made by the employee after login
+     */
     public String secondMenuEmployee(){
         try {
             System.out.println("1. List product");
@@ -106,7 +133,9 @@ public class Menu {
     }
 
 
-
+    /**
+     * the menu that appears to employees after login
+     */
     public void secondPageEmployee(){
         try {
             do {
@@ -135,7 +164,9 @@ public class Menu {
     }
 
 
-
+    /**
+     * @return the choice made by the client after login
+     */
     public String secondMenuClient(){
         try {
             System.out.println("1. Search product");
@@ -150,7 +181,9 @@ public class Menu {
     }
 
 
-
+    /**
+     * the menu that appears to client after login
+     */
     public void secondPageClient(){
         try {
             do {
@@ -185,7 +218,9 @@ public class Menu {
     }
 
 
-
+    /**
+     * @return the choice made by the client after Search product
+     */
     public String searchProductMenu() {
 
         try {
@@ -203,7 +238,9 @@ public class Menu {
     }
 
 
-
+    /**
+     *  the menu that appears to client after Search product
+     */
     public void searchProductPage(){
         try {
             Product p = new Product();
@@ -253,7 +290,9 @@ public class Menu {
     }
 
 
-
+    /**
+     * the method of controll of product purchase
+     */
     public void productPurchase(){
         try {
             System.out.println("Enter the ID product to buy: ");
@@ -282,15 +321,20 @@ public class Menu {
                     }
                 }
             }
+
         }
         catch(Exception e){
             System.out.println("ERRORE: " + e);
         }
 
+
     }
 
 
-
+    /**
+     * @param emlpoyee check if the user si an employee
+     *                 the metod checks the creations of new accounts
+     */
     public void checkNewAccount(boolean emlpoyee){
 
         try {

@@ -1,6 +1,11 @@
 package assegnamento;
 
-
+/**
+ *
+ * The class {@code Product} provides an implementation of a
+ * model of a product
+ *
+ **/
 public class Product {
 
     private String name;
@@ -9,6 +14,11 @@ public class Product {
     private float price;
     private int quantity;
 
+
+    /**
+     * Class constructor.
+     *
+     **/
     public Product(){
         this.name = "";
         this.code = 0;
@@ -17,6 +27,14 @@ public class Product {
         this.quantity = 0;
     }
 
+
+    /**
+     * @param nam the product's name
+     * @param cod the product's code to recognize it
+     * @param nameProd the producer of product
+     * @param pric the product's price
+     * @param quantit the product's quantity
+     */
     public  Product(final String nam, final int cod, final String nameProd, final float pric, final int quantit){
         this.name = nam;
         this.code = cod;
@@ -25,30 +43,49 @@ public class Product {
         this.quantity = quantit;
     }
 
+    /**
+     * @return the product's name
+     */
     public String getName(){
 
         return this.name;
     }
 
+    /**
+     * @return the product's code
+     */
     public int getCode(){
 
         return this.code;
     }
 
+    /**
+     * @return the producer's name of product
+     */
     public String getNameproductor(){
 
         return this.name_productor;
     }
 
+    /**
+     * @return the product's price
+     */
     public float getPrice(){
 
         return this.price;
     }
 
+    /**
+     * @return the product's quantity
+     */
     public int getQuantity(){
         return this.quantity;
     }
 
+    /**
+     * @param q quantity of product
+     *          to incrase or decrase from stock.
+     */
     public void addQuantity(int q) {
 
         this.quantity = this.quantity + q;
@@ -60,6 +97,12 @@ public class Product {
             System.out.println("Quantity update!");
     }
 
+    /**
+     * @param q the quantity of product that a client
+     *          would buy
+     * @return true, if the purchase was succesfull
+     *          false, if the purchase was wrong
+     */
     public boolean acquisto(int q){
         if(q > this.quantity){
             System.out.println("There aren't enough products !!!");
@@ -72,6 +115,9 @@ public class Product {
         }
     }
 
+    /**
+     * print all the info of product
+     */
     public void stamp(){
         System.out.println(this.getCode()+" "+this.getName()+" "+this.getNameproductor()+" €"+this.getPrice()+" "+this.getQuantity());
     }
