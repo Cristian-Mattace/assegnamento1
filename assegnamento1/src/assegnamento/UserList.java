@@ -56,7 +56,13 @@ public class UserList {
      * @param u the user that will be removed from the list
      */
     public void removeUser(User u){
-        this.users.remove(u);
+        if(u.getId() > 1) {
+            this.users.remove(u);
+        }
+        else
+        {
+            System.out.println("Permission denied!");
+        }
     }
 
 

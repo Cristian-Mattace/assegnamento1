@@ -438,7 +438,13 @@ public class Menu {
                         break;
 
                     case "2":
-                        this.UL.removeUser(searchUserById());
+                        try {
+                            System.out.println("Insert user's id: ");
+                            String ids = this.br.readLine();
+                            this.UL.removeUser(this.UL.getUserById(Integer.parseInt(ids)));
+                        }catch(Exception e){
+                            System.out.println("ERRORE: " + e);
+                        }
                         break;
 
                     case "3":
@@ -446,7 +452,13 @@ public class Menu {
                         break;
 
                     case "4":
-                        this.PL.removeProduct(searchProductById());
+                        try {
+                            System.out.println("Insert product's id: ");
+                            String ids = this.br.readLine();
+                            this.PL.removeProduct(this.PL.getProductById(Integer.parseInt(ids)));
+                        }catch(Exception e){
+                            System.out.println("ERRORE: " + e);
+                        }
                         break;
 
                     case "5":
@@ -492,39 +504,6 @@ public class Menu {
         }
         catch(Exception e){
             System.out.println("ERRORE: " + e);
-        }
-    }
-
-
-    /**
-     * It finds the user in the user list by the ID
-     * @return The user found
-     */
-    public User searchUserById(){
-        try {
-            System.out.println("Inserte user's id: ");
-            String ids = this.br.readLine();
-            return this.UL.getUserById(Integer.parseInt(ids));
-        }catch(Exception e){
-            System.out.println("ERRORE: " + e);
-            return null;
-        }
-    }
-
-
-    /**
-     * It finds the product in the product list by the ID
-     * @return The product found
-     */
-    public Product searchProductById(){
-        try {
-            System.out.println("Insert product's id: ");
-            String ids = this.br.readLine();
-
-            return this.PL.getProductById(Integer.parseInt(ids));
-        }catch(Exception e){
-            System.out.println("ERRORE: " + e);
-            return null;
         }
     }
 
